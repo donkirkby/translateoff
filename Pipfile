@@ -8,7 +8,8 @@ verify_ssl = true
 [packages]
 
 briefcase = "*"
-voc = "==0.1.4"
+voc = "==0.1.5"
+pytest = "*"
 
 
 [dev-packages]

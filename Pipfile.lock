@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3e72b1f6a2af5bd2020c9964b62ff409c03e2afc0e97472d2bd936fc2135a490"
+            "sha256": "2950887d94ec77318e6ac6da3ee08ad8a707678363b3b5a4d5e3046acdbbd216"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -33,6 +33,13 @@
             ],
             "version": "==0.12.1"
         },
+        "attrs": {
+            "hashes": [
+                "sha256:a17a9573a6f475c99b551c0e0a812707ddda1ec9653bed04c13841404ed6f450",
+                "sha256:1c7960ccfd6a005cd9f7ba884e6316b5e430a3f1a6c37c5f87d8b43f83b54ec9"
+            ],
+            "version": "==17.4.0"
+        },
         "binaryornot": {
             "hashes": [
                 "sha256:b8b71173c917bddcd2c16070412e369c3ed7f0528926f70cac18a6c97fd563e4",
@@ -42,17 +49,17 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:c38bce3cc24b9bce12bac77545b2e094daa3822188760f49a2f94656129e9b8d",
-                "sha256:65e37bc86f2ac3b25c75c3c3daa92872d8249793006bee8b6961f2490d727a36"
+                "sha256:4c746d55fb6294c11e78db76648c7f321f8068dc5ab402456b5e3e4ee52423b9",
+                "sha256:5c02372447e07bd67f7c19624642dcf5c7aabe126e1c44ff4ad241aeb97fc729"
             ],
-            "version": "==1.7.0"
+            "version": "==1.7.2"
         },
         "botocore": {
             "hashes": [
-                "sha256:3f4d7551775072fb4b8552fc95413894d718ab6dde8ebfd4a3e5888ce19ec091",
-                "sha256:c1611160101e02ac3e6e209473dc7ba8978f9730fe5ba82697771606dabe2d1f"
+                "sha256:8ded801591ef5df04244dc1ba2496dd04a9abbd165d0d2ad501b6cd4b34946d4",
+                "sha256:27945af4bfb2a1ff1f11c730d24b84da6e1f40465907029e8980903f3b984070"
             ],
-            "version": "==1.10.0"
+            "version": "==1.10.2"
         },
         "briefcase": {
             "hashes": [
@@ -137,12 +144,40 @@
             ],
             "version": "==1.0"
         },
+        "more-itertools": {
+            "hashes": [
+                "sha256:11a625025954c20145b37ff6309cd54e39ca94f72f6bb9576d1195db6fa2442e",
+                "sha256:0dd8f72eeab0d2c3bd489025bb2f6a1b8342f9b198f6fc37b52d15cfa4531fea",
+                "sha256:c9ce7eccdcb901a2c75d326ea134e0886abfbea5f93e91cc95de9507c0816c44"
+            ],
+            "version": "==4.1.0"
+        },
+        "pluggy": {
+            "hashes": [
+                "sha256:7f8ae7f5bdf75671a718d2daf0a64b7885f74510bcd98b1a0bb420eb9a9d0cff"
+            ],
+            "version": "==0.6.0"
+        },
         "poyo": {
             "hashes": [
                 "sha256:230ec11c2f35a23410c1f0e474f09fa4e203686f40ab3adca7b039c845d8c325",
                 "sha256:103b4ee3e1c7765098fe1cabe43f828db2e2a6079646561a2117e1a809f352d6"
             ],
             "version": "==0.4.1"
+        },
+        "py": {
+            "hashes": [
+                "sha256:983f77f3331356039fdd792e9220b7b8ee1aa6bd2b25f567a963ff1de5a64f6a",
+                "sha256:29c9fab495d7528e80ba1e343b958684f4ace687327e6f789a94bf3d1915f881"
+            ],
+            "version": "==1.5.3"
+        },
+        "pytest": {
+            "hashes": [
+                "sha256:6266f87ab64692112e5477eba395cfedda53b1933ccd29478e671e73b420c19c",
+                "sha256:fae491d1874f199537fd5872b5e1f0e74a009b979df9d53d1553fd03da1703e1"
+            ],
+            "version": "==3.5.0"
         },
         "python-dateutil": {
             "hashes": [
@@ -181,10 +216,10 @@
         },
         "voc": {
             "hashes": [
-                "sha256:985f5c13b51ef85949b0062fd13371dc681c6408a65f368ddf6a6d3a83f218c1",
-                "sha256:92dd47f249a4906f148c10bc2cda49dd5277e68c09d301916c0633d86534a030"
+                "sha256:a2401134c4201a010a41e559e371619e8ae1787643233026613d19c7376ddbf3",
+                "sha256:51a534eb1910b0cdaf43ecb737bfbe8d2900f2c9a3b94917b7fe8f99718894fa"
             ],
-            "version": "==0.1.4"
+            "version": "==0.1.5"
         },
         "whichcraft": {
             "hashes": [

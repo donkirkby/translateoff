@@ -1,3 +1,4 @@
+from java.util import Random
 import android
 from android.util import Log
 from android.widget import LinearLayout
@@ -6,6 +7,7 @@ from android.widget import TextView
 from android.view import Gravity
 import android.view
 
+import translateoff.sentence
 
 
 class ButtonClick(implements=android.view.View[OnClickListener]):
@@ -18,32 +20,42 @@ class ButtonClick(implements=android.view.View[OnClickListener]):
         self.callback(*self.args, **self.kwargs)
 
 
-class MyApp:
+class TranslateOffApp:
     def __init__(self):
         self._activity = android.PythonActivity.setListener(self)
-        self.button = None
+        self.buttons = []
         self.top_label = None
         self.message = None
+        self.sentence = None
 
     def onCreate(self):
-        self.button = Button(self._activity)
+        r = Random()
+
+        self.sentence = translateoff.sentence.Sentence('我想我可以。',
+                                                       'I think I can.',
+                                                       randrange=r.nextInt)
 
         vlayout = LinearLayout(self._activity)
         vlayout.setOrientation(LinearLayout.VERTICAL)
 
         self.top_label = TextView(self._activity)
+        self.top_label.setText(self.sentence.translation)
         self.top_label.setTextSize(50)
         vlayout.addView(self.top_label)
 
         hlayout = LinearLayout(self._activity)
         hlayout.setOrientation(LinearLayout.HORIZONTAL)
         hlayout.setGravity(Gravity.CENTER)
-        self.button.setTextSize(50)
-        hlayout.addView(self.button)
+        for text in self.sentence.get_buttons():
+            button = Button(self._activity)
+            button.setText(text)
+            button.setTextSize(50)
+            hlayout.addView(button)
+        print('Buttons done.')
         vlayout.addView(hlayout)
 
-        self.button.setOnClickListener(ButtonClick(self.play))
-        self.button.setText('Click Me')
+        # self.button.setOnClickListener(ButtonClick(self.play))
+        # self.button.setText('Click Me')
 
         footer = TextView(self._activity)
         footer.setText('Powered by Python')
@@ -64,4 +76,4 @@ class MyApp:
 
 
 def main():
-    MyApp()
+    TranslateOffApp()

@@ -1,7 +1,11 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+/.pytest_cache
 *.py[cod]
 *$py.class
+
+# Configuration
+/local.properties
 
 # OSX useful to ignore
 *.DS_Store
