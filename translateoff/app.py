@@ -23,7 +23,7 @@ class ButtonClick(implements=android.view.View[OnClickListener]):
 class TranslateOffApp:
     def __init__(self):
         self._activity = android.PythonActivity.setListener(self)
-        self.buttons = []
+        self.solution_buttons = []
         self.top_label = self.solution_label = None
         self.message = None
         self.sentence = None
@@ -81,11 +81,17 @@ class TranslateOffApp:
             self.top_label.setText(self.message)
 
     def move_button(self, button):
-        parent = button.getParent()
-        parent.removeView(button)
-        self.solution_layout.addView(button)
-        buttons = [self.solution_layout.getChildAt(i).getText()
-                   for i in range(1, self.solution_layout.getChildCount())]
+        if button in self.solution_buttons:
+            source = self.solution_layout
+            target = self.shelf_layout
+            self.solution_buttons.remove(button)
+        else:
+            source = self.shelf_layout
+            target = self.solution_layout
+            self.solution_buttons.append(button)
+        source.removeView(button)
+        target.addView(button)
+        buttons = [button.getText() for button in self.solution_buttons]
         if self.sentence.is_solved(buttons):
             self.solution_label.setText(self.sentence.text)
             while self.solution_layout.getChildCount() > 1:
