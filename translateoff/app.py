@@ -12,6 +12,34 @@ import android.view
 from translateoff.sentence import Sentence
 
 
+sentence_text = """\
+我想我可以。
+I think I can.
+他在學中文。
+He's studying Chinese.
+你不是學生。
+You are not a student.
+现在几点钟？
+What time is it?
+今天是几月几日？
+What is the date today?
+今天是星期日。
+Today is Sunday.
+今天是她的生日。
+It's her birthday today.
+我喜欢冰淇淋。
+I like ice cream.
+他喜欢玩游戏。
+He likes to play games.
+他几岁？
+How old is he?
+她有长头发吗？
+Does she have long hair?
+你喜欢小龙包吗？
+Do you like soup dumplings?
+"""
+
+
 # noinspection PyUnresolvedReferences,PyPep8Naming
 class ButtonClick(implements=android.view.View[OnClickListener]):
     def __init__(self, callback, *args, **kwargs):
@@ -114,15 +142,12 @@ class TranslateOffApp:
     def onCreate(self):
         r = Random()
 
-        self.sentences = [Sentence('我想我可以。',
-                                   'I think I can.',
-                                   randrange=r.nextInt),
-                          Sentence('他在學中文。',
-                                   "He's studying Chinese.",
-                                   randrange=r.nextInt),
-                          Sentence('你不是學生。',
-                                   "You are not a student.",
-                                   randrange=r.nextInt)]
+        sentence_lines = iter(sentence_text.splitlines())
+        sentence_pairs = zip(sentence_lines, sentence_lines)
+        self.sentences = [Sentence(text,
+                                   translation,
+                                   randrange=r.nextInt)
+                          for text, translation in sentence_pairs]
 
         self.players = [Player(self._activity, is_inverted, self.on_solved)
                         for is_inverted in (True, False)]
