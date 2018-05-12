@@ -64,6 +64,8 @@ class Player:
         self.is_inverted = is_inverted
         self.solved_callback = solved_callback
         self.solution_buttons = []
+        self.shelf_buttons = []
+        self.solution_sources = []
         self.top_label = None
         self.solution_label = None
         self.sentence = None
@@ -99,35 +101,51 @@ class Player:
         self.sentence = sentence
         self.top_label.setText(self.sentence.translation)
         self.solution_label.setText('')
-        self.solution_buttons.clear()
-        while self.solution_layout.getChildCount() > 1:
-            self.solution_layout.removeViewAt(1)
-        while self.shelf_layout.getChildCount():
+        self.solution_sources.clear()
+        button_count = len(self.sentence.get_buttons())
+        while self.shelf_layout.getChildCount() > button_count:
             self.shelf_layout.removeViewAt(0)
-        for text in self.sentence.get_buttons():
-            button = Button(self.activity)
+            self.shelf_buttons.pop(0)
+            self.solution_layout.removeViewAt(1)
+            self.solution_buttons.pop(0)
+        while self.shelf_layout.getChildCount() < button_count:
+            self.add_button(self.shelf_layout, self.shelf_buttons)
+            self.add_button(self.solution_layout, self.solution_buttons)
+        for button in self.solution_buttons:
+            button.setVisibility(button.INVISIBLE)
+        for text, button in zip(self.sentence.get_buttons(), self.shelf_buttons):
             button.setText(text)
-            button.setTextSize(50)
-            self.shelf_layout.addView(button)
-            button.setOnClickListener(ButtonClick(self.move_button, button))
+            button.setVisibility(button.VISIBLE)
+
+    def add_button(self, layout, button_list):
+        button = Button(self.activity)
+        button.setTextSize(50)
+        layout.addView(button)
+        button_list.append(button)
+        button.setOnClickListener(ButtonClick(self.move_button, button))
 
     def move_button(self, button):
         if button in self.solution_buttons:
-            source = self.solution_layout
-            target = self.shelf_layout
-            self.solution_buttons.remove(button)
+            solution_index = self.solution_buttons.index(button)
+            source = self.solution_sources[solution_index]
+            self.solution_sources.pop(solution_index)
+            last_button = self.solution_buttons[len(self.solution_sources)]
+            last_button.setVisibility(last_button.INVISIBLE)
+            source.setVisibility(source.VISIBLE)
+            for target, source in zip(self.solution_buttons,
+                                      self.solution_sources):
+                target.setText(source.getText())
         else:
-            source = self.shelf_layout
-            target = self.solution_layout
-            self.solution_buttons.append(button)
-        source.removeView(button)
-        target.addView(button)
-        buttons = [button.getText() for button in self.solution_buttons]
+            button.setVisibility(button.INVISIBLE)
+            last_button = self.solution_buttons[len(self.solution_sources)]
+            last_button.setText(button.getText())
+            last_button.setVisibility(last_button.VISIBLE)
+            self.solution_sources.append(button)
+        buttons = [button.getText() for button in self.solution_sources]
         if self.sentence.is_solved(buttons):
+            for button in self.solution_buttons:
+                button.setVisibility(button.INVISIBLE)
             self.solution_label.setText(self.sentence.text)
-            while self.solution_layout.getChildCount() > 1:
-                self.solution_layout.removeView(
-                    self.solution_layout.getChildAt(1))
             self.solved_callback(self)
 
 
