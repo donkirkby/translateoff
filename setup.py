@@ -2,7 +2,6 @@
 import io
 import re
 from setuptools import setup, find_packages
-import sys
 
 with io.open('./translateoff/__init__.py', encoding='utf8') as version_file:
     version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]", version_file.read(), re.M)
@@ -15,7 +14,7 @@ with io.open('./translateoff/__init__.py', encoding='utf8') as version_file:
 with io.open('README.rst', encoding='utf8') as readme:
     long_description = readme.read()
 
-
+# noinspection PyUnboundLocalVariable
 setup(
     name='translateoff',
     version=version,
@@ -38,6 +37,11 @@ setup(
     ],
     install_requires=[
     ],
+    extras_require={
+        'dev': [
+            'requests'
+        ]
+    },
     options={
         'app': {
             'formal_name': 'Translate-Off',
