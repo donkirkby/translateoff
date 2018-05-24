@@ -79,8 +79,10 @@ def main():
             if match.group(3):
                 simplified[match.group(1)] = match.group(3)
 
-    for chinese_text, english_text in islice(fetch_sentences(hsk1), 20):
-        print(chinese_text)
+    simplified_translation = str.maketrans(simplified)
+
+    for chinese_text, english_text in islice(fetch_sentences(hsk1), 2000):
+        print(chinese_text.translate(simplified_translation))
         print(english_text)
 
 

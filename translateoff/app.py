@@ -165,7 +165,14 @@ class TranslateOffApp:
 
     def onCreate(self):
         sentence_lines = iter(sentence_text.splitlines())
-        self.sentence_pairs = list(zip(sentence_lines, sentence_lines))[10:20]
+        all_sentence_pairs = list(zip(sentence_lines, sentence_lines))
+        self.sentence_pairs = []
+        while len(self.sentence_pairs) < 10 and all_sentence_pairs:
+            # noinspection PyUnresolvedReferences
+            i = self.random.nextInt(len(all_sentence_pairs))
+            sentence_pair = all_sentence_pairs.pop(i)
+            if len(sentence_pair[0]) <= 9:
+                self.sentence_pairs.append(sentence_pair)
 
         self.players = [Player(self._activity, is_inverted, self.on_solved)
                         for is_inverted in (True, False)]
