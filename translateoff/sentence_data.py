@@ -1915,10 +1915,6 @@ You are a good cook, aren't you?
 Don't talk!
 我被高中退学了。
 I was kicked out of high school.
-去死吧！
-Fuck you!
-你去死吧!
-Fuck you!
 早上好！
 Good morning!
 早！
@@ -2493,8 +2489,6 @@ You run.
 He runs.
 她跑。
 She runs.
-我才不听你说的呢！
-I don't give a fuck about what you say!
 河从桥下流过。
 The river flows under the bridge.
 吃了没

@@ -58,9 +58,19 @@ class Player:
         self.top_layout = LinearLayout(self.activity)
         self.top_layout.setOrientation(LinearLayout.HORIZONTAL)
         self.top_label = TextView(self.activity)
+        # noinspection PyUnresolvedReferences
+        self.top_label.setLayoutParams(LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            1))
         self.top_label.setTextSize(50)
         self.top_layout.addView(self.top_label)
         self.next_button = Button(self.activity)
+        # noinspection PyUnresolvedReferences
+        self.next_button.setLayoutParams(LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            0))
         self.next_button.setText('Hint')
         self.next_button.setOnClickListener(
             ButtonClick(self.next))
